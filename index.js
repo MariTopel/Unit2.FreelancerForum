@@ -39,7 +39,6 @@ const averageFreelancer = averageRate(freelancers);
 function freelancerCard(freelancer) {
   const card = document.createElement("div");
   card.className = "freelancerClass";
-  card.style.border = "3px solid";
 
   const name = document.createElement("h2");
   name.textContent = freelancer.name;
@@ -53,4 +52,42 @@ function freelancerCard(freelancer) {
   card.appendChild(name);
   card.appendChild(occupation);
   card.appendChild(rate);
+
+  return card;
 }
+
+function freelancerList(freelancers) {
+  const container = document.createElement("div");
+  container.className = "freelancer-list";
+
+  freelancers.forEach((freelancer) => {
+    const card = freelancerCard(freelancer);
+    container.appendChild(card);
+  });
+
+  return container;
+}
+
+function createAverageRateDisplay(freelancers) {
+  const avg = averageRate(freelancers).toFixed(2);
+
+  const averageElement = document.createElement("p");
+  averageElement.className = "average-rate";
+  averageElement.textContent = `Average Rate: $${avg}/hr`;
+
+  return averageElement;
+}
+
+function renderApp() {
+  const app = document.getElementById("app");
+
+  app.innerHTML = "";
+
+  const avgElement = createAverageRateDisplay(freelancers);
+  app.appendChild(avgElement);
+
+  const listElement = freelancerList(freelancers.slice(0, 100));
+  app.appendChild(listElement);
+}
+
+renderApp();
