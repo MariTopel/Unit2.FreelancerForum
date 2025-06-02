@@ -36,22 +36,21 @@ console.log(averageRate(freelancers));
 
 const averageFreelancer = averageRate(freelancers);
 
-function freelanceOne(freelancer) {
-  const container = document.createElement("div");
-  container.className = "freelancer";
+function freelancerCard(freelancer) {
+  const card = document.createElement("div");
+  card.className = "freelancerClass";
+  card.style.border = "3px solid";
 
-  const nameElement = document.createElement("h1");
-  nameElement.textContent = freelancer.name;
+  const name = document.createElement("h2");
+  name.textContent = freelancer.name;
 
-  const occupationElement = document.createElement("p");
-  occupationElement.textContent = freelancer.occupation;
+  const occupation = document.createElement("p");
+  occupation.textContent = freelancer.occupation;
 
-  const rateElement = document.createElement("p");
-  rateElement.textContent = freelancer.rate;
+  const rate = document.createElement("p");
+  rate.textContent = freelancer.rate;
 
-  container.appendChild(nameElement);
-  container.appendChild(occupationElement);
-  container.appendChild(rateElement);
-
-  return container;
+  card.appendChild(name);
+  card.appendChild(occupation);
+  card.appendChild(rate);
 }
